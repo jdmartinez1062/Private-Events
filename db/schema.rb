@@ -14,17 +14,17 @@ ActiveRecord::Schema.define(version: 2020_04_01_224245) do
 
   create_table "events", force: :cascade do |t|
     t.string "location"
-    t.date "date"
+    t.datetime "date"
+    t.bigint "creator_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["creator_id"], name: "index_events_on_creator_id"
   end
 
   create_table "events_users", id: false, force: :cascade do |t|
-    t.bigint "creator_id"
     t.bigint "attendant_id"
     t.bigint "event_id"
     t.index ["attendant_id"], name: "index_events_users_on_attendant_id"
-    t.index ["creator_id"], name: "index_events_users_on_creator_id"
     t.index ["event_id"], name: "index_events_users_on_event_id"
   end
 
