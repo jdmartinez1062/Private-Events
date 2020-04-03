@@ -22,10 +22,11 @@ module SessionsHelper
         @current_user = user
     end
 
-    def log_out(user)
+    def log_out
 
-        sessions.delete(:user_id)
+        session.delete(:user_id)
         @current_user = nil
+        redirect_to root_path
 
     end
 end
