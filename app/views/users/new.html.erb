@@ -1,2 +1,13 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>Sign up</h1>
+<%=form_for @user do |t|%>
+
+    <%=render "shared/error_messages", object: t.object%>
+
+    <%=t.label :name%>
+    <%=t.text_field :name%>
+    <%=t.label :email%>
+    <%=t.email_field :email%>
+    
+    <%=t.submit "Sign up!"%>
+
+<% end %>
