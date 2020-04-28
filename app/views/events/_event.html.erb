@@ -1,0 +1,10 @@
+<li>
+    <div>
+        <h2>Location: <%=link_to "#{event.location}", event_path(event) %></h2>
+
+        <div>
+            <p>Date: <%=event.date%></p>
+            <p>Creator: <%=event.creator.name%></p>
+        </div>
+    </div>
+</li>

@@ -1,3 +1,27 @@
 <h1>User Profile Page</h1>
 <p>User name:</p>
 <%=@user.name%>
+<div>
+    <h2>Created Event's List</h2>
+</div>
+<% if  current_user.created_events.any?%>
+<%= render partial: 'shared/events_feed', locals: {events: @created_events}%>
+<%else%>
+<h3>Create a new event <%=link_to "home page", root_path%></h3>
+<%end%>
+
+<div>
+    <h2>Attended Event's List</h2>
+</div>
+<% if  current_user.attended_events.any?%>
+<%= render partial: 'shared/events_feed', locals: {events: @upcoming_events}%>
+<%else%>
+<h3>Join a new event in the <%=link_to "home page", root_path%></h3>
+<%end%>
+
+<% if  current_user.attended_events.any?%>
+<h2>Previously attended events</h2>
+<%= render partial: 'shared/events_feed', locals: {events: @previous_events}%>
+<%else%>
+<h3>You haven't atteneded any events</h3>
+<%end%>

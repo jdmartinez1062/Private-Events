@@ -1,0 +1,11 @@
+<h1>Events#show</h1>
+<p>Find me in app/views/events/show.html.erb</p>
+
+<%=render partial: 'event', locals: {event: @event}%>
+
+<% if @event.attendees.any?%>
+<div>
+    <h2>Attendee's List</h2>
+</div>
+<%= render 'shared/users_feed'%>
+<%end%>

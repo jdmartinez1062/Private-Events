@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_01_224245) do
+ActiveRecord::Schema.define(version: 2020_04_16_203428) do
 
   create_table "events", force: :cascade do |t|
     t.string "location"
@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 2020_04_01_224245) do
   end
 
   create_table "events_users", id: false, force: :cascade do |t|
-    t.bigint "attendant_id"
-    t.bigint "event_id"
-    t.index ["attendant_id"], name: "index_events_users_on_attendant_id"
-    t.index ["event_id"], name: "index_events_users_on_event_id"
+    t.bigint "attendee_id"
+    t.bigint "attended_event_id"
+    t.index ["attended_event_id"], name: "index_events_users_on_attended_event_id"
+    t.index ["attendee_id"], name: "index_events_users_on_attendee_id"
   end
 
   create_table "users", force: :cascade do |t|

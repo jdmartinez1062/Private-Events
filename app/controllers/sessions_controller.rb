@@ -1,8 +1,6 @@
 class SessionsController < ApplicationController
   include SessionsHelper
-  def new
-   
-  end
+  def new; end
 
   def create
     user = User.find_by(name: params[:session][:name])
@@ -10,6 +8,7 @@ class SessionsController < ApplicationController
       log_in(user)
       redirect_to user
     else
+      flash.now[:warnign] = 'Log in ussucessful'
       render 'new'
     end
   end
