@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   belongs_to :creator, inverse_of: :created_events, class_name: 'User'
   has_many :events_users, foreign_key: :attended_event_id
   has_many :attendees, through: :events_users, inverse_of: 'attended_events', source: :attendee
+  default_scope -> { order(created_at: :desc) }
   scope :upcoming, -> { where('date >= ?', Time.now) }
   scope :past, -> { where('date < ?', Time.now) }
 

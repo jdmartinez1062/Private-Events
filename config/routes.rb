@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-
+  post '/attend_event/:id', to: 'users#attend_event', as: 'attend_event'
   resources :events
   resources :users
 

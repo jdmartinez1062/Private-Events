@@ -7,4 +7,8 @@
             <p>Creator: <%=event.creator.name%></p>
         </div>
     </div>
+    <%if logged_in?%>
+    <%= link_to "Attend event", attend_event_path(event), method: :post,
+                                       data: { confirm: "You sure?" } %>
+    <%end%>
 </li>
