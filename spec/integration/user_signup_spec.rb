@@ -19,7 +19,6 @@ RSpec.feature 'User signup', type: :feature do
     fill_in 'Name', with: user.name
     fill_in 'Email', with: user.email
     click_button 'Sign up'
-    user = User.last
     expect(page).to have_text('Sign up unsuccessfull')
     expect(page).to have_current_path(signup_path)
   end

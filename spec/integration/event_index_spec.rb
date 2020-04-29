@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature 'Events index', type: :feature do
-  let! (:user) { User.create(name: 'test1', email: 'test1@email.com') }
-  let! (:event1) { user.created_events.create(date: Time.now, location: "#{user.name}'s house 1") }
-  let! (:event2) { user.created_events.create(date: Time.now, location: "#{user.name}'s house 2") }
+  let!(:user) { User.create(name: 'test1', email: 'test1@email.com') }
+  let!(:event1) { user.created_events.create(date: Time.now, location: "#{user.name}'s house 1") }
+  let!(:event2) { user.created_events.create(date: Time.now, location: "#{user.name}'s house 2") }
 
   scenario 'User visits event index page' do
     visit events_path

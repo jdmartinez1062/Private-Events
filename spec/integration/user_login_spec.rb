@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'User login', type: :feature do
-  let! (:user) { User.create(name: 'test1', email: 'test1@email.com') }
+  let!(:user) { User.create(name: 'test1', email: 'test1@email.com') }
   scenario 'User logs in and gets redirected to user profile' do
     visit login_path
 

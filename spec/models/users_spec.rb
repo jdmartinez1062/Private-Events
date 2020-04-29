@@ -3,19 +3,19 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'create user' do
     it 'User creation' do
-      user = User.create(name: 'test1', email: 'test1@email.com')
+      User.create(name: 'test1', email: 'test1@email.com')
       expect(User.count).to eql(1)
     end
     it 'Failed user creation due to email' do
-      user = User.create(name: 'test1', email: 'test1email.com')
+      User.create(name: 'test1', email: 'test1email.com')
       expect(User.count).to eql(0)
     end
     it 'Failed user creation due to empty name' do
-      user = User.create(name: '', email: 'test1email.com')
+      User.create(name: '', email: 'test1email.com')
       expect(User.count).to eql(0)
     end
     it 'Failed user creation due to empty attributes' do
-      user = User.create(name: '', email: '')
+      User.create(name: '', email: '')
       expect(User.count).to eql(0)
     end
   end

@@ -23,13 +23,14 @@ class UsersController < ApplicationController
   def attend_event
     @event = Event.find_by(id: params[:id])
 
-    if current_user.attended_events << @event
-      flash = 'you have joined a new event'
-      redirect_to root_path
-    else
-      flash = 'Something went wrong'
-      redirect_to root_path
-    end
+    flash[:sucess] = if current_user.attended_events << @event
+                       'you have joined a new event'
+
+                     else
+                       'Something went wrong'
+
+                     end
+    redirect_to root_path
   end
 
   def show
@@ -50,9 +51,9 @@ class UsersController < ApplicationController
   end
 
   def logged_in_user
-    unless logged_in?
-      flash[:danger] = 'Please log in.'
-      redirect_to login_url
-    end
+    return if logged_in?
+
+    flash[:danger] = 'Please log in.'
+    redirect_to login_url
   end
 end
