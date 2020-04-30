@@ -23,6 +23,10 @@ class User < ApplicationRecord
     attended_events.past
   end
 
+  def attended?(event)
+    attended_events.find_by(id: event.id) == event
+  end
+
   private
 
   def downcase_email
