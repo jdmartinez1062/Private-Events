@@ -1,0 +1,18 @@
+<li>
+    <div>
+        <h2>Location: <%=link_to "#{event.location}", event_path(event) %></h2>
+
+        <div>
+            <p>Date: <%=event.date%></p>
+            <p>Creator: <%=event.creator.name%></p>
+        </div>
+    </div>
+    <%if logged_in?%>
+    <%if current_user.attended?(event)%>
+    <p>You are already attending this event</p>
+    <%else%>
+    <%= link_to "Attend event", attend_event_path(event), method: :post,
+                                       data: { confirm: "You sure?" } %>
+    <%end%>
+    <%end%>
+</li>

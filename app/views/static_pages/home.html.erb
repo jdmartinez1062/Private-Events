@@ -1,0 +1,14 @@
+<h1>StaticPages#home</h1>
+<p>Find me in app/views/static_pages/home.html.erb</p>
+<%if logged_in?%>
+<div>
+    <h2>Create your own event</h2>
+    <%=render'shared/events_form'%>
+</div>
+<%end%>
+<%if @events.any?%>
+<div>
+    <h2>Find an event!</h2>
+    <%=render partial: 'shared/events_feed', locals: {events: @events}%>
+</div>
+<%end%>
